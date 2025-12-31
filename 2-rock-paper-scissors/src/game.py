@@ -1,7 +1,16 @@
+"""
+Author: Arzhang-z
+Date Created: 12/31/2025
+Description: Rock Paper Scissors game.
+"""
+
+
 import random
 
 
 class RockPaperScissors:
+    """Main class for Rock Paper Scissors game
+    """
     def __init__(self):
         self.choices = ["rock","paper","scissors"]
         self.win_count = 0
@@ -17,10 +26,17 @@ class RockPaperScissors:
         print(f"Invalid Choice! You must select from ({self.choices}) ")
         return self.get_player_choice()
 
-    def get_computer_choice(self): 
+    def get_computer_choice(self):
+        """Get Computer Choice randomly from Choices: rock, paper, scissors."""
         return random.choice(self.choices)
     
-    def decide_winner(self,user_choice,computer_choice):
+    def decide_winner(self,user_choice: str,computer_choice: str):
+        """Decide the winner of the game based on user and computer choices
+        
+        :param user_choice: choice of user
+        :param computer_choice: choice of computer
+        :return: result of the game
+        """
         print(f"YOU CHOSE: ({user_choice})")
         print(f"COMPUTER CHOSE: ({computer_choice})")
         
@@ -37,6 +53,12 @@ class RockPaperScissors:
         return f"Oh No! The computer Won! Computer won {self.total - (self.win_count + self.tie_count)} times !"    
 
     def play(self):
+        """Play the game
+        - Get user choice
+        - Get computer choice
+        - Decide the winner
+        - Print the result
+        """
         user_choice = self.get_player_choice()
         computer_choice = self.get_computer_choice()
         self.total += 1
