@@ -4,7 +4,8 @@ from abc import ABC, abstractmethod
 
 import nltk
 
-nltk.download("words")
+# Do it Once then comment it
+#nltk.download("words")
 
 class PasswordGenerator(ABC):
     @abstractmethod
@@ -45,7 +46,7 @@ class MemorablePasswordGenerator(PasswordGenerator):
             vocabulary = nltk.corpus.words.words()
 
         self.vocabulary = vocabulary
-        self.number_of_words = number_of_words
+        self.number_of_words = int(number_of_words)
         self.capitalize = capitalization
         self.seperator = seperator
 
@@ -58,46 +59,11 @@ class MemorablePasswordGenerator(PasswordGenerator):
         
         return self.seperator.join(password_words)
     
-
-def test_random_password_genartor():
-    random_gen = RandomPaswordGenerator(length=10, include_numbers=True,include_symbols=True)
-    password = random_gen.generate()
-    print(password)
-    assert len(password) == 10
-    assert any(char in string.ascii_uppercase for char in password)
-    assert any(char in string.digits for char in password)
-
-
-def test_memorable_password_generator():
-    memorable_gen = MemorablePasswordGenerator(
-        number_of_words=4,
-        seperator="_",
-        capitalization=True,
-        vocabulary=nltk.corpus.words.words()
-    )
-    password = memorable_gen.generate()
-    print(password)
-    assert len(password.split("_")) == 4
-    assert any(word[0].isupper() for word in password.split("_"))
-
-
-def test_pincode_generator():
-    pin_gen = PinGenerator(8)
-    pin = pin_gen.generate()
-    print(pin)
-    assert len(pin) == 8
-    assert all(char in string.digits for char in pin)
-
-
-def main():
-    print("Testing RandomPasswordGenerator:")
-    test_random_password_genartor()
-    print("Testing MemorablePasswordGenerator:")
-    test_memorable_password_generator()
-    print("Testing PinGenerator:")
-    test_pincode_generator()
-
-
 if __name__ == "__main__":
-    password_generator = MemorablePasswordGenerator(7,"_",True,None)
+    args = ["number of words: int", "seperator: str", "capitalization: bool"]    
+    user_inputs = [input(f"please enter input number {i+1}, {args[i]} ") for i in range(3)]
+    inp_1 = int(user_inputs[0])
+    inp_2 = user_inputs[1]
+    inp_3 = user_inputs[2].lower == "true"
+    password_generator = MemorablePasswordGenerator(inp_1,inp_2,inp_3,vocabulary=None)
     print(password_generator.generate())
