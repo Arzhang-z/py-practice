@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 import nltk
 
 # Do it Once then comment it
-#nltk.download("words")
+nltk.download("words")
 
 class PasswordGenerator(ABC):
     @abstractmethod
