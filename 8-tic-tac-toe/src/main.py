@@ -6,7 +6,7 @@ class TicTacToe:
         self.board: list[str] = [" "] * 10 #list(map(str, range(10))) # 0th index is not used
         self.player_turn = self.get_random_first_player()
 
-    def get_random_first_player(self):
+    def get_random_first_player(self) -> str:
         return random.choice(["X","O"])
 
     def show_board(self):
@@ -18,17 +18,17 @@ class TicTacToe:
         print(self.board[7] + "|" + self.board[8] + "|" + self.board[9])
         print("\n")
 
-    def swap_player_turn(self):
+    def swap_player_turn(self) -> str:
         self.player_turn = "X" if self.player_turn != "X" else "O"
         return self.player_turn
     
-    def is_board_filled(self):
+    def is_board_filled(self) -> bool:
         return " " not in self.board[1:]
 
     def fix_spot(self, cell: int, player: str):
         self.board[cell] = player
 
-    def has_player_won(self, player: str):
+    def has_player_won(self, player: str) -> bool:
         win_combination = [
             [1,2,3], [4,5,6], [7,8,9],  # rows
             [1,4,7], [2,5,8], [3,6,9],  # columns
