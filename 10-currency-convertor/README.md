@@ -49,7 +49,7 @@ It fetches real-time exchange rates from an external API and allows users to con
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/currency-converter.git
+git clone https://github.com/Arzhang-z/currency-converter.git
 cd currency-converter
 ```
 
@@ -66,7 +66,11 @@ pip install -r requirements.txt
 ```
 
 ## ▶️ Running the App
-
+0. First User exports the Exchange_Rate_API_KEY in terminal session:
+```bash
+   export Exchange_Rate_API_KEY {Your_Exchange_Rate_API_KEY_from_exchange_rate_api}
+```
+then run the app
 ```bash
 streamlit run app.py
 ```

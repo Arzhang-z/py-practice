@@ -9,11 +9,11 @@ cache = TTLCache(maxsize=100, ttl=3*60*60)
 @cached(cache=cache)
 def get_exchange_rate(base_currency: str = "CAD", target_currency: str = "USD") -> float:
     try:
-        YOUR_Exchange_Rate_API_KEY = os.environ['YOUR_Exchange_Rate_API_KEY']
-        if not YOUR_Exchange_Rate_API_KEY:
+        Exchange_Rate_API_KEY = os.environ['YOUR_Exchange_Rate_API_KEY']
+        if not Exchange_Rate_API_KEY:
             raise RuntimeError("Exchange Rate API key not set")
         
-        url = f'https://v6.exchangerate-api.com/v6/{YOUR_Exchange_Rate_API_KEY}/latest/{base_currency}'
+        url = f'https://v6.exchangerate-api.com/v6/{Exchange_Rate_API_KEY}/latest/{base_currency}'
     
         response = requests.get(url, timeout=5)
         response.raise_for_status()
